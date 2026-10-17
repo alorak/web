@@ -29,6 +29,23 @@ Oyun sayfasının ilk dört kartı aşağıdaki sıradadır ve detay penceresind
 3. [Sayı Çubukları](https://alorak.github.io/sayicubuk/)
 4. [Sayma](https://alorak.github.io/sayma/)
 
+### Eklenen oyunlar
+
+Aşağıdaki oyunlar da katalogda yer alır; ilk dört oyunun sırası korunur:
+
+| Oyun | Durum |
+| --- | --- |
+| [Ping Pong](https://alorak.github.io/pingpong/) | Canlı uygulama |
+| [Erken İşlem](https://alorak.github.io/erkenislemler/) | Canlı uygulama |
+| [Yüzlük Toplama](https://alorak.github.io/yuzluktoplama/) | Canlı uygulama |
+| [10'a Tamamla](https://alorak.github.io/onatamamla/) | Canlı uygulama |
+| Karom | Henüz yayımlanmış depo/oyun bağlantısı bulunamadı |
+| Harf Feleği | Henüz yayımlanmış depo/oyun bağlantısı bulunamadı |
+| Çiziyi | Henüz yayımlanmış depo/oyun bağlantısı bulunamadı |
+| Renk Eşleştirme | Henüz yayımlanmış depo/oyun bağlantısı bulunamadı |
+
+Bağlantısı doğrulanmayan dört kart, kullanıcıyı 404 sayfasına göndermek yerine detay penceresinde **Yakında** açıklaması gösterir. Bağlantıları hazır olduğunda `app.js` içindeki `unpublishedGameRepos` ve `liveAppUrls` güncellenebilir. Yeni kartlarda Türkçe/İngilizce içerikler ve yerel SVG çizimleri bulunur.
+
 ## Bilim ve Araçlar öne çıkan uygulamalar
 
 Bilim sayfasının ilk kartları: [Kristal Yapı](https://alorak.github.io/kristalyapi/), [Enerji](https://alorak.github.io/enerji/), [Dalgalar](https://alorak.github.io/dalgalar/).
