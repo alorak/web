@@ -3,7 +3,7 @@
 
 const sections = {
   oyun: {
-    title: "Oyunlar", eyebrow: "01 / Oyun",
+    title: "Oyunlar",
     intro: "Dokun, dene, keşfet. Küçük adımlarla büyük beceriler geliştiren oyunlar.",
     projects: [
       ["sayitreni","Sayı Treni","Vagonları doğru sırayla dizerek sayıları öğren.","4–6 YAŞ","train","#e8f2ff","#ee6753"],
@@ -15,7 +15,7 @@ const sections = {
     ]
   },
   araclar: {
-    title: "Araçlar", eyebrow: "02 / Araçlar",
+    title: "Araçlar",
     intro: "Bir fikri denemeyi, üretmeyi ve paylaşmayı kolaylaştıran küçük ama kullanışlı araçlar.",
     projects: [
       ["exs","Matematik Editörü","Denklemleri ve bilimsel notlarını düzenle.","ÜRETKENLİK","math","#e9eefe","#477dd5"],
@@ -26,7 +26,7 @@ const sections = {
     ]
   },
   egitim: {
-    title: "Eğitim", eyebrow: "03 / Eğitim",
+    title: "Eğitim",
     intro: "Merak etmeyi, soru sormayı ve öğrendikçe üretmeyi destekleyen deneyimler.",
     projects: [
       ["sayicubuk","Sayı Çubukları","Parçaları birleştirerek miktarları ve ilişkileri gör.","MATEMATİK","rods","#e4f2ff","#377bcc"],
@@ -37,7 +37,7 @@ const sections = {
     ]
   },
   bilim: {
-    title: "Bilim", eyebrow: "04 / Bilim",
+    title: "Bilim",
     intro: "Dalgaları, kristalleri, verileri ve fiziksel dünyayı etkileşimle keşfet.",
     projects: [
       ["kristalyapi","Kristal Yapı","Kristal örgüleri ve üç boyutlu atom düzenlerini incele.","KRİSTALOGRAFİ","crystal","#e6f0fb","#3a72ce"],
@@ -63,7 +63,7 @@ const uiStrings = {
     heroCuriosity: "Merak et.", heroPlay: "Oyna,", heroLearn: "öğren,", heroCreate: "üret.",
     heroCopy: "ALORAK, oyunla başlayan fikirlerin yaratıcı araçlara, öğrenme deneyimlerine ve bilimsel keşiflere dönüştüğü açık bir üretim alanı.",
     footnote: "Her proje küçük bir merakla başlar.",
-    projectCount: "proje", details: "Detay", detailsAria: "detayları gör",
+    details: "Detay", detailsAria: "detayları gör",
     viewGithub: "GitHub'da incele", externalNote: "Proje yeni sekmede açılır."
   },
   en: {
@@ -79,14 +79,14 @@ const uiStrings = {
     heroCuriosity: "Stay curious.", heroPlay: "Play,", heroLearn: "learn,", heroCreate: "create.",
     heroCopy: "ALORAK is an open creative space where ideas sparked by play grow into useful tools, learning experiences and scientific discoveries.",
     footnote: "Every project begins with a little curiosity.",
-    projectCount: "projects", details: "Details", detailsAria: "view details",
+    details: "Details", detailsAria: "view details",
     viewGithub: "View on GitHub", externalNote: "The project opens in a new tab."
   }
 };
 
 const enSections = {
   oyun: {
-    title: "Games", eyebrow: "01 / Games",
+    title: "Games",
     intro: "Play, try things out and discover. Games that build big skills through small steps.",
     projects: {
       sayitreni: ["Number Train", "Arrange train cars in the right order and explore numbers.", "AGES 4–6"],
@@ -98,7 +98,7 @@ const enSections = {
     }
   },
   araclar: {
-    title: "Tools", eyebrow: "02 / Tools",
+    title: "Tools",
     intro: "Small, practical tools that make it easier to experiment, create and share ideas.",
     projects: {
       exs: ["Math Editor", "Edit equations and organize your scientific notes.", "PRODUCTIVITY"],
@@ -109,7 +109,7 @@ const enSections = {
     }
   },
   egitim: {
-    title: "Education", eyebrow: "03 / Education",
+    title: "Education",
     intro: "Experiences that encourage curiosity, questions and hands-on learning.",
     projects: {
       sayicubuk: ["Number Rods", "Combine rods to explore quantities and relationships.", "MATHEMATICS"],
@@ -120,7 +120,7 @@ const enSections = {
     }
   },
   bilim: {
-    title: "Science", eyebrow: "04 / Science",
+    title: "Science",
     intro: "Explore waves, crystals, data and the physical world through interaction.",
     projects: {
       kristalyapi: ["Crystal Structure", "Examine crystal lattices and 3D atomic arrangements.", "CRYSTALLOGRAPHY"],
@@ -131,7 +131,7 @@ const enSections = {
   }
 };
 
-let language = "tr";
+let language = "en";
 try {
   const storedLanguage = localStorage.getItem("alorak-language");
   if (storedLanguage === "tr" || storedLanguage === "en") language = storedLanguage;
@@ -323,10 +323,8 @@ function cataloguePage(route) {
   const section = localizedSection(route);
   return `<section class="catalogue-backdrop" aria-labelledby="page-title">
     <div class="catalogue-panel">
-      <div class="section-eyebrow">${section.eyebrow}</div>
       <div class="catalogue-heading">
         <div><h1 id="page-title">${section.title}</h1><p>${section.intro}</p></div>
-        <span class="project-count">${section.projects.length} ${t("projectCount")}</span>
       </div>
       <div class="project-grid">${section.projects.map(projectCard).join("")}</div>
     </div>
