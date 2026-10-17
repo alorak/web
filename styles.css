@@ -53,7 +53,8 @@ a:focus-visible, button:focus-visible {
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
 }
 .brand { display: inline-flex; align-items: center; text-decoration: none; flex: 0 0 auto; }
-.brand-logo { display: block; width: 52px; height: 52px; object-fit: contain; border-radius: 10px; }
+.brand-wordmark { display: inline-block; color: var(--navy); font-family: Arial, Helvetica, sans-serif; font-size: 30px; font-weight: 800; line-height: 1; letter-spacing: -.065em; white-space: nowrap; }
+.brand-wordmark-dot { color: var(--red); }
 .primary-nav { display: flex; align-items: center; gap: 3px; }
 .primary-nav a {
   text-decoration: none; color: #2d3c53;
@@ -74,17 +75,17 @@ main { flex: 1; }
   width: 100%; max-width: var(--page-width); margin: auto;
   padding: clamp(30px, 4vw, 64px) clamp(22px, 4.2vw, 64px) 34px;
 }
-.hero-eyebrow, .section-eyebrow {
+.section-eyebrow {
   font-size: 13px; font-weight: 800; letter-spacing: .16em;
   text-transform: uppercase; color: var(--blue);
   display: flex; align-items: center; gap: 13px;
 }
-.hero-eyebrow::before, .section-eyebrow::before {
+.section-eyebrow::before {
   content: ""; width: 32px; height: 3px; border-radius: 5px; background: var(--red);
 }
 .hero-grid {
   display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(300px, .7fr);
-  align-items: center; gap: clamp(24px, 4vw, 64px); margin-top: 20px;
+  align-items: center; gap: clamp(24px, 4vw, 64px); margin-top: 0;
 }
 .hero-title {
   margin: 0; max-width: 910px;
@@ -103,7 +104,6 @@ main { flex: 1; }
   display: flex; align-items: center; justify-content: space-between; gap: 20px;
   color: var(--muted); font-size: 14px; margin-top: 11px;
 }
-.home-footnote span:last-child { color: var(--blue); font-weight: 700; }
 .home-footnote .spark { font-size: 19px; color: var(--red); vertical-align: -1px; }
 .catalogue-backdrop {
   background: linear-gradient(170deg, #edf1f6 0%, #f4f5f7 55%, #eef3f8 100%);
@@ -223,7 +223,7 @@ main { flex: 1; }
 }
 @media (max-width: 760px) {
   .header-inner { min-height: 58px; }
-  .brand-logo { width: 47px; height: 47px; }
+  .brand-wordmark { font-size: 27px; }
   .menu-toggle { display: block; margin-left: auto; }
   .primary-nav {
     position: absolute; top: calc(100% - 1px); left: 0; right: 0;
