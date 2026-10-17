@@ -1,38 +1,38 @@
 <!doctype html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f6f4ee">
-  <meta name="description" content="ALORAK: oyun, araçlar, eğitim ve bilim için açık ve merak dolu projeler.">
-  <meta property="og:title" content="ALORAK — Oyna, öğren, üret">
-  <meta property="og:description" content="Oyunlarla öğren, araçlarla üret, bilimle keşfet.">
+  <meta name="description" content="ALORAK: a curious and open collection of games, tools, education and science projects.">
+  <meta property="og:title" content="ALORAK — Play, learn, create">
+  <meta property="og:description" content="Learn through play, create with tools and explore through science.">
   <meta property="og:type" content="website">
-  <title>ALORAK — Oyna, öğren, üret</title>
+  <title>ALORAK — Play, learn, create</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg">
   <link rel="stylesheet" href="./styles.css">
   <script src="./app.js" defer></script>
 </head>
 <body>
-  <a class="skip-link" href="#main" data-i18n="skip">İçeriğe geç</a>
+  <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
   <div class="site-shell">
     <header class="site-header">
       <div class="header-inner">
-        <a class="brand" href="#/" aria-label="ALORAK — Ana sayfa">
+        <a class="brand" href="#/" aria-label="ALORAK — Home">
           <span class="brand-wordmark" aria-hidden="true">ALORAK<span class="brand-wordmark-dot">.</span></span>
         </a>
         <div class="header-actions">
-          <nav class="primary-nav" id="primary-nav" aria-label="Ana menü">
-            <a href="#/oyun" data-route="oyun" data-i18n="navGames">Oyun</a>
-            <a href="#/araclar" data-route="araclar" data-i18n="navTools">Araçlar</a>
-            <a href="#/egitim" data-route="egitim" data-i18n="navEducation">Eğitim</a>
-            <a href="#/bilim" data-route="bilim" data-i18n="navScience">Bilim</a>
+          <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
+            <a href="#/oyun" data-route="oyun" data-i18n="navGames">Games</a>
+            <a href="#/araclar" data-route="araclar" data-i18n="navTools">Tools</a>
+            <a href="#/egitim" data-route="egitim" data-i18n="navEducation">Education</a>
+            <a href="#/bilim" data-route="bilim" data-i18n="navScience">Science</a>
           </nav>
-          <div class="language-switch" role="group" aria-label="Dil seçimi">
-            <button type="button" data-lang="tr" lang="tr" aria-label="Türkçe" aria-pressed="true">TR</button>
-            <button type="button" data-lang="en" lang="en" aria-label="English" aria-pressed="false">EN</button>
+          <div class="language-switch" role="group" aria-label="Language">
+            <button type="button" data-lang="tr" lang="tr" aria-label="Türkçe" aria-pressed="false">TR</button>
+            <button type="button" data-lang="en" lang="en" aria-label="English" aria-pressed="true">EN</button>
           </div>
-          <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="primary-nav">
+          <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
             <span></span><span></span><span></span>
           </button>
         </div>
@@ -43,16 +43,15 @@
 
     <footer class="site-footer">
       <div class="footer-inner">
-        <div class="footer-brand">ALORAK<span>.</span></div>
-        <p data-i18n="footer">Merakla geliştirildi. Paylaşmak için üretildi.</p>
-        <a href="https://github.com/alorak" target="_blank" rel="noopener noreferrer" aria-label="ALORAK GitHub hesabı (yeni sekme)">GitHub <span aria-hidden="true">↗</span></a>
+        <p data-i18n="footer">Made with curiosity. Built to be shared.</p>
+        <a href="https://github.com/alorak" target="_blank" rel="noopener noreferrer" aria-label="ALORAK GitHub profile (opens in a new tab)">GitHub <span aria-hidden="true">↗</span></a>
       </div>
     </footer>
   </div>
 
   <dialog class="project-dialog" id="project-dialog" aria-labelledby="dialog-title">
     <div id="dialog-content"></div>
-    <button class="dialog-close" id="dialog-close" type="button" aria-label="Pencereyi kapat">×</button>
+    <button class="dialog-close" id="dialog-close" type="button" aria-label="Close dialog">×</button>
   </dialog>
 </body>
 </html>
