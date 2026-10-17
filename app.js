@@ -14,7 +14,15 @@ const sections = {
       ["sayiyuvasi","Sayı Yuvası","Sayıları ve miktarları birbiriyle eşleştir.","4–6 YAŞ","nest","#eef6e8","#1da997"],
       ["catchnumber","Sayı Yakala","Doğru sayıyı yakala; dikkatini ve hızını geliştir.","5–7 YAŞ","catch","#def8fa","#397fe1"],
       ["blockCode","BlockCode","Blokları birleştirerek kodlama mantığını keşfet.","6–9 YAŞ","code","#f0e9fa","#8464d2"],
-      ["sayitahmin","Tahmin Oyunu","İpuçlarını izle, sayı doğrusunda hedefi bul.","5–7 YAŞ","guess","#fff0e5","#ea6b86"]
+      ["sayitahmin","Tahmin Oyunu","İpuçlarını izle, sayı doğrusunda hedefi bul.","5–7 YAŞ","guess","#fff0e5","#ea6b86"],
+      ["pingpong","Ping Pong","Topa vur, reflekslerini ve koordinasyonunu geliştir.","5–8 YAŞ","pingpong","#eaf2ff","#3971c6"],
+      ["karom","Karom","Taşları deliğe göndererek nişan ve strateji çalış.","6–9 YAŞ","carrom","#f6eee4","#916b4e"],
+      ["harffelegi","Harf Feleği","Harflerden kelimeler bul, kelime dağarcığını geliştir.","6–9 YAŞ","wordwheel","#f1ebfb","#8069bb"],
+      ["ciziyi","Çiziyi","Çizgileri takip ederek okuma ve yazmayı eğlenerek öğren.","4–6 YAŞ","tracing","#e7f4ff","#397cbd"],
+      ["renkeslestirme","Renk Eşleştirme","Aynı renkleri eşleştir, renkleri tanı ve dikkatini geliştir.","3–5 YAŞ","colorpairs","#eaf7ee","#2d9e75"],
+      ["erkenislemler","Erken İşlem","Basit toplama ve çıkarma ile matematiğe ilk adımı at.","5–7 YAŞ","operations","#fff2dc","#ba0918"],
+      ["yuzluktoplama","Yüzlük Toplama","Yüzlük tablo üzerinde toplama yaparak sayıları keşfet.","6–8 YAŞ","hundreds","#e7efff","#4c78c8"],
+      ["onatamamla","10'a Tamamla","Eksik sayıyı bul, toplamı 10'a tamamla.","5–8 YAŞ","make10","#eff8e6","#5b9a5d"]
     ]
   },
   araclar: {
@@ -72,7 +80,8 @@ const uiStrings = {
     footnote: "Her proje küçük bir merakla başlar.",
     details: "Detay", detailsAria: "detayları gör",
     viewGithub: "GitHub'da incele", externalNote: "Proje yeni sekmede açılır.",
-    openApp: "Uygulamayı aç", appExternalNote: "Uygulama yeni sekmede açılır."
+    openApp: "Uygulamayı aç", appExternalNote: "Uygulama yeni sekmede açılır.",
+    comingSoon: "Bu oyun henüz yayınlanmadı. Bağlantısı hazır olduğunda burada açılabilecek."
   },
   en: {
     skip: "Skip to content",
@@ -89,7 +98,8 @@ const uiStrings = {
     footnote: "Every project begins with a little curiosity.",
     details: "Details", detailsAria: "view details",
     viewGithub: "View on GitHub", externalNote: "The project opens in a new tab.",
-    openApp: "Open app", appExternalNote: "The app opens in a new tab."
+    openApp: "Open app", appExternalNote: "The app opens in a new tab.",
+    comingSoon: "This game has not been published yet. It will open here once a link is available."
   }
 };
 
@@ -106,7 +116,15 @@ const enSections = {
       catchnumber: ["Catch the Number", "Catch the correct number and sharpen your focus and speed.", "AGES 5–7"],
       sayma: ["Counting", "Count objects and take your first steps with numbers.", "AGES 3–5"],
       blockCode: ["BlockCode", "Connect blocks and discover the basics of coding.", "AGES 6–9"],
-      sayitahmin: ["Number Guessing", "Follow the clues to find the target on a number line.", "AGES 5–7"]
+      sayitahmin: ["Number Guessing", "Follow the clues to find the target on a number line.", "AGES 5–7"],
+      pingpong: ["Ping Pong", "Hit the ball to develop reflexes and coordination.", "AGES 5–8"],
+      karom: ["Carrom", "Aim your pieces at the pockets and practice strategy.", "AGES 6–9"],
+      harffelegi: ["Word Wheel", "Find words from letters and build your vocabulary.", "AGES 6–9"],
+      ciziyi: ["Trace the Line", "Follow lines and enjoy early reading and writing practice.", "AGES 4–6"],
+      renkeslestirme: ["Color Matching", "Match colors and build focus and recognition.", "AGES 3–5"],
+      erkenislemler: ["Early Operations", "Take your first steps with addition and subtraction.", "AGES 5–7"],
+      yuzluktoplama: ["Hundreds Chart Addition", "Explore addition on a hundreds chart.", "AGES 6–8"],
+      onatamamla: ["Make Ten", "Find the missing number to make a total of ten.", "AGES 5–8"]
     }
   },
   araclar: {
@@ -171,7 +189,13 @@ function localizedSection(route) {
   };
 }
 
+const unpublishedGameRepos = new Set(["karom", "harffelegi", "ciziyi", "renkeslestirme"]);
+
 const liveAppUrls = {
+  "oyun:pingpong": "https://alorak.github.io/pingpong/",
+  "oyun:erkenislemler": "https://alorak.github.io/erkenislemler/",
+  "oyun:yuzluktoplama": "https://alorak.github.io/yuzluktoplama/",
+  "oyun:onatamamla": "https://alorak.github.io/onatamamla/",
   "oyun:brickids": "https://alorak.github.io/brickids/",
   "oyun:webtrain": "https://alorak.github.io/webtrain/",
   "oyun:sayicubuk": "https://alorak.github.io/sayicubuk/",
@@ -190,9 +214,12 @@ const projectIndex = new Map();
 for (const [route, section] of Object.entries(sections)) {
   section.projects = section.projects.map(([repo,title,description,badge,art,bg,tag]) => {
     const key = route + ":" + repo;
+    const isUnpublished = route === "oyun" && unpublishedGameRepos.has(repo);
     const project = {
       key, repo, title, description, badge, art, bg, tag,
-      category: section.title, url: liveAppUrls[key] || "https://github.com/alorak/" + repo,
+      category: section.title,
+      url: isUnpublished ? null : (liveAppUrls[key] || "https://github.com/alorak/" + repo),
+      isUnpublished,
       isLiveApp: Boolean(liveAppUrls[key])
     };
     projectIndex.set(project.key, project);
@@ -212,6 +239,54 @@ function graphic(kind) {
   const label = (x,y,t,size=26,color="#29466e") => `<text x="${x}" y="${y}" font-size="${size}" text-anchor="middle" fill="${color}" font-weight="800" font-family="system-ui,sans-serif">${t}</text>`;
   let draw = "";
   switch (kind) {
+    case "pingpong":
+      draw = box(35,29,330,167,"#233d67",20) +
+        box(64,64,13,88,"#66c6d0",6) + box(323,68,13,88,"#ba0918",6) +
+        dot(208,107,15,"white") +
+        `<path d="M200 35v155" stroke="#6985a8" stroke-width="3" stroke-dasharray="9 9"/>` +
+        `<path d="M166 130q29 27 66 5" stroke="white" stroke-width="3" stroke-dasharray="5 7" fill="none"/>`;
+      break;
+    case "carrom":
+      draw = box(99,22,202,181,"#c29262",19) + box(116,40,168,145,"#fff1d1",10) +
+        [[117,41],[283,41],[117,184],[283,184]].map(([x,y])=>dot(x,y,13,"#203149")).join("") +
+        `<circle cx="200" cy="112" r="46" stroke="#c59c6d" stroke-width="3" fill="none"/>` +
+        [[182,103,"#203149"],[218,103,"#ba0918"],[200,131,"#203149"],[200,90,"#fff"]]
+          .map(([x,y,c])=>dot(x,y,11,c,"#9e7852",2)).join("") +
+        dot(252,152,12,"#fff","#ba0918",2);
+      break;
+    case "wordwheel":
+      draw = dot(200,111,86,"#fff","white",5) +
+        `<circle cx="200" cy="111" r="67" fill="none" stroke="#b5a5dd" stroke-width="9"/>` +
+        [[200,57,"A"],[254,111,"E"],[200,165,"L"],[146,111,"K"]]
+          .map(([x,y,l])=>label(x,y,l,34,"#624da4")).join("") +
+        dot(200,111,26,"#ba0918") + label(200,123,"?",34,"white");
+      break;
+    case "tracing":
+      draw = box(55,24,290,179,"white",16) +
+        [74,119,164].map(y=>`<path d="M83 ${y}h230" stroke="#b9d7ea" stroke-width="3" stroke-dasharray="8 9"/>`).join("") +
+        `<path d="M102 151Q148 55 191 119T297 90" fill="none" stroke="#397cbd" stroke-width="7" stroke-linecap="round"/>` +
+        `<path d="m252 172 47-41 13 15-44 45-20 3Z" fill="#f2c269" stroke="#bd995a" stroke-width="3"/>`;
+      break;
+    case "colorpairs":
+      draw = [[87,55,"#e85c67"],[181,55,"#3c84d6"],[275,55,"#49b78c"],
+              [87,139,"#49b78c"],[181,139,"#e85c67"],[275,139,"#3c84d6"]]
+        .map(([x,y,c])=>box(x,y,51,51,c,11)).join("") +
+        `<path d="M113 107C113 125 300 110 300 139M207 107V132M300 107C300 128 113 117 113 139" fill="none" stroke="#8da6b9" stroke-width="3" stroke-dasharray="5 7"/>`;
+      break;
+    case "hundreds":
+      draw = box(61,20,278,186,"white",14) +
+        Array.from({length:10},(_,r)=>Array.from({length:10},(_,c)=>
+          box(80+c*24,32+r*16.4,21,14,
+            r===4 && c>=2 && c<=5 ? "#ba0918" : (r%2 ? "#dce8f8" : "#eff4fc"),2)
+        ).join("")).join("") +
+        label(200,222,"100",18,"#315f9c");
+      break;
+    case "make10":
+      draw = box(56,36,288,152,"white",19) +
+        [0,1,2,3,4,5].map(n=>dot(90+n*40,88,15,"#408bd0")).join("") +
+        [0,1,2,3].map(n=>dot(130+n*40,139,15,"#ba0918")).join("") +
+        label(200,47,"6 + 4 = 10",25,"#315d8a");
+      break;
     case "brick":
       draw = `<polygon points="64,90 197,29 337,94 202,158" fill="#f37769"/>` +
         `<polygon points="64,90 202,158 202,205 64,139" fill="#d65855"/>` +
@@ -461,10 +536,10 @@ function openProject(key) {
       <h2 id="dialog-title">${item.title}</h2>
       <p>${item.description}</p>
       <div class="dialog-actions">
-        <a class="dialog-link" href="${item.url}" target="_blank" rel="noopener noreferrer">
+        ${item.isUnpublished ? `<span class="dialog-note" role="status">${t("comingSoon")}</span>` : `<a class="dialog-link" href="${item.url}" target="_blank" rel="noopener noreferrer">
           ${item.isLiveApp ? t("openApp") : t("viewGithub")} <span aria-hidden="true">↗</span>
         </a>
-        <span class="dialog-note">${item.isLiveApp ? t("appExternalNote") : t("externalNote")}</span>
+        <span class="dialog-note">${item.isLiveApp ? t("appExternalNote") : t("externalNote")}</span>`}
       </div>
     </div>`;
   dialog.showModal();
