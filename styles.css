@@ -7,7 +7,7 @@
   --muted: #64718a;
   --blue: #326fca;
   --blue-soft: #eaf1fb;
-  --red: #e96051;
+  --red: #ba0918;
   --gold: #e6b45f;
   --line: #dee3e9;
   --white: #fff;
@@ -93,7 +93,7 @@ main { flex: 1; }
   padding: clamp(30px, 4vw, 64px) clamp(22px, 4.2vw, 64px) 34px;
 }
 .hero-grid {
-  display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(300px, .7fr);
+  display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(300px, .8fr);
   align-items: center; gap: clamp(24px, 4vw, 64px); margin-top: 0;
 }
 .hero-title {
@@ -103,20 +103,16 @@ main { flex: 1; }
 }
 .hero-title .under-blue { text-decoration: underline; text-decoration-color: var(--blue); text-decoration-thickness: .065em; text-underline-offset: .10em; }
 .hero-title .under-red { text-decoration: underline; text-decoration-color: var(--red); text-decoration-thickness: .065em; text-underline-offset: .10em; }
-.hero-copy {
-  margin: 0; max-width: 500px;
-  padding: clamp(20px, 2.15vw, 30px);
-  background: #edf1f4; border: 1px solid #dce4eb; border-radius: 24px;
-  box-shadow: 0 10px 28px rgba(22, 38, 64, .04);
-  font: 400 clamp(21px, 1.6vw, 26px)/1.4 Georgia, "Times New Roman", serif;
-  letter-spacing: -.028em; color: #2b2d2e;
+.hero-art {
+  display: block; width: 100%; max-width: 620px; height: auto;
+  border-radius: 18px; mix-blend-mode: multiply;
 }
 .hero-rule { height: 1px; background: #ced2d5; margin: clamp(30px, 4vw, 58px) 0 0; }
 .home-footnote {
   display: flex; align-items: center; justify-content: space-between; gap: 20px;
   color: var(--muted); font-size: 14px; margin-top: 11px;
 }
-.home-footnote .spark { font-size: 19px; color: var(--red); vertical-align: -1px; }
+.home-footnote .spark { font-size: 19px; color: var(--navy); vertical-align: -1px; }
 .catalogue-backdrop {
   background: linear-gradient(170deg, #edf1f6 0%, #f4f5f7 55%, #eef3f8 100%);
   min-height: calc(100dvh - 62px);
@@ -222,7 +218,7 @@ main { flex: 1; }
 @media (min-width: 1500px) { .catalogue-panel { max-width: 1420px; } }
 @media (max-width: 1120px) {
   .hero-grid { grid-template-columns: 1fr; gap: 28px; }
-  .hero-copy { margin-top: 0; max-width: 540px; }
+  .hero-art { max-width: 540px; }
   .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 760px) {
@@ -243,7 +239,7 @@ main { flex: 1; }
   .primary-nav a { display: block; padding: 15px 16px; }
   .home { padding-top: 34px; min-height: 64dvh; }
   .hero-title { font-size: clamp(44px, 9.5vw, 68px); }
-  .hero-copy { font-size: clamp(19px, 4.4vw, 25px); }
+  .hero-art { max-width: 460px; }
   .hero-rule { margin-top: 34px; }
   .catalogue-backdrop { min-height: calc(100dvh - 58px); padding: 8px 8px 24px; }
   .catalogue-panel { border-radius: 22px; padding: 20px 14px 24px; }
