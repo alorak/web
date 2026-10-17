@@ -10,7 +10,8 @@ ALORAK'ın oyun, araçlar, eğitim ve bilim projelerini bir araya getiren statik
 - Kartlardan açılan erişilebilir detay penceresi ve gerçek GitHub proje bağlantıları
 - Mobil uyumlu menü, klavye erişimi, düşük hareket tercihi desteği
 - Harici font, framework, CDN veya çalışma zamanı bağımlılığı yok
-- Orijinal ALORAK logosu: `sources/alorak-avatar.png` (navbar ve favicon)
+- Navbar'da kare zeminsiz `ALORAK.` yazı logosu, sekme simgesinde uyumlu `A.` kullanılır.
+- Önceki avatar görseli `sources/alorak-avatar.png` konumunda korunur.
 - Kompakt navbar, daraltılmış sayfa boşlukları ve daha sıkı kart düzeni
 
 Kart kapakları harici görsel dosyalar yerine hafif SVG illüstrasyonlardan üretilir. Proje listeleri ve açıklamaları `app.js` içindeki `sections` nesnesinden düzenlenebilir.
