@@ -14,22 +14,28 @@
   <script src="./app.js" defer></script>
 </head>
 <body>
-  <a class="skip-link" href="#main">İçeriğe geç</a>
+  <a class="skip-link" href="#main" data-i18n="skip">İçeriğe geç</a>
   <div class="site-shell">
     <header class="site-header">
       <div class="header-inner">
         <a class="brand" href="#/" aria-label="ALORAK — Ana sayfa">
           <span class="brand-wordmark" aria-hidden="true">ALORAK<span class="brand-wordmark-dot">.</span></span>
         </a>
-        <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="primary-nav">
-          <span></span><span></span><span></span>
-        </button>
-        <nav class="primary-nav" id="primary-nav" aria-label="Ana menü">
-          <a href="#/oyun" data-route="oyun">Oyun</a>
-          <a href="#/araclar" data-route="araclar">Araçlar</a>
-          <a href="#/egitim" data-route="egitim">Eğitim</a>
-          <a href="#/bilim" data-route="bilim">Bilim</a>
-        </nav>
+        <div class="header-actions">
+          <nav class="primary-nav" id="primary-nav" aria-label="Ana menü">
+            <a href="#/oyun" data-route="oyun" data-i18n="navGames">Oyun</a>
+            <a href="#/araclar" data-route="araclar" data-i18n="navTools">Araçlar</a>
+            <a href="#/egitim" data-route="egitim" data-i18n="navEducation">Eğitim</a>
+            <a href="#/bilim" data-route="bilim" data-i18n="navScience">Bilim</a>
+          </nav>
+          <div class="language-switch" role="group" aria-label="Dil seçimi">
+            <button type="button" data-lang="tr" lang="tr" aria-label="Türkçe" aria-pressed="true">TR</button>
+            <button type="button" data-lang="en" lang="en" aria-label="English" aria-pressed="false">EN</button>
+          </div>
+          <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="primary-nav">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
       </div>
     </header>
 
@@ -38,7 +44,7 @@
     <footer class="site-footer">
       <div class="footer-inner">
         <div class="footer-brand">ALORAK<span>.</span></div>
-        <p>Merakla geliştirildi. Paylaşmak için üretildi.</p>
+        <p data-i18n="footer">Merakla geliştirildi. Paylaşmak için üretildi.</p>
         <a href="https://github.com/alorak" target="_blank" rel="noopener noreferrer" aria-label="ALORAK GitHub hesabı (yeni sekme)">GitHub <span aria-hidden="true">↗</span></a>
       </div>
     </footer>
