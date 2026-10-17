@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f4ee">
+  <meta name="description" content="ALORAK: oyun, araçlar, eğitim ve bilim için açık ve merak dolu projeler.">
+  <meta property="og:title" content="ALORAK — Oyna, öğren, üret">
+  <meta property="og:description" content="Oyunlarla öğren, araçlarla üret, bilimle keşfet.">
+  <meta property="og:type" content="website">
+  <title>ALORAK — Oyna, öğren, üret</title>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">İçeriğe geç</a>
+  <div class="site-shell">
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="#/" aria-label="ALORAK — Ana sayfa">
+          <svg class="brand-mark" width="39" height="39" viewBox="0 0 40 40" aria-hidden="true">
+            <rect x="2" y="14" width="25" height="24" rx="8" fill="#3475d1"/>
+            <path d="M9 20h12M9 25h12M9 30h8" stroke="#f6f4ee" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M19 3 36 11.5 28 28 11 19.5Z" fill="#ec6252"/>
+            <path d="M19 3 36 11.5 28 16 11 7.5Z" fill="#f47764"/>
+            <path d="M28 16v12L11 19.5v-12Z" fill="#c94038"/>
+            <circle cx="19" cy="7.9" r="2.5" fill="#f7ad9f"/>
+            <circle cx="28" cy="12.4" r="2.5" fill="#f7ad9f"/>
+          </svg>
+          <span class="brand-name">ALORAK<span class="brand-period">.</span></span>
+        </a>
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="primary-nav">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="primary-nav" id="primary-nav" aria-label="Ana menü">
+          <a href="#/oyun" data-route="oyun">Oyun</a>
+          <a href="#/araclar" data-route="araclar">Araçlar</a>
+          <a href="#/egitim" data-route="egitim">Eğitim</a>
+          <a href="#/bilim" data-route="bilim">Bilim</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1"></main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">ALORAK<span>.</span></div>
+        <p>Merakla geliştirildi. Paylaşmak için üretildi.</p>
+        <a href="https://github.com/alorak" target="_blank" rel="noopener noreferrer" aria-label="ALORAK GitHub hesabı (yeni sekme)">GitHub <span aria-hidden="true">↗</span></a>
+      </div>
+    </footer>
+  </div>
+
+  <dialog class="project-dialog" id="project-dialog" aria-labelledby="dialog-title">
+    <div id="dialog-content"></div>
+    <button class="dialog-close" id="dialog-close" type="button" aria-label="Pencereyi kapat">×</button>
+  </dialog>
+</body>
+</html>
