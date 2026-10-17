@@ -15,7 +15,8 @@ ALORAK'ın oyun, araçlar, eğitim ve bilim projelerini bir araya getiren statik
 - Önceki avatar görseli `sources/alorak-avatar.png` konumunda korunur.
 - Kompakt navbar, daraltılmış sayfa boşlukları ve daha sıkı kart düzeni
 - Kategori sayfaları yalnızca başlık/açıklama ile açılır; proje sayacı ve numaralı etiketler kaldırılmıştır
-- Ana sayfa açıklaması hafif renkli yuvarlatılmış panelde, altbilgi tek satır içerik ve GitHub bağlantısı ile sunulur
+- Ana sayfada açıklama kutusu yerine `sources/hero-geometric-red.png` geometrik illüstrasyonu bulunur; turuncu üçgenleri marka bordosu `#ba0918` ile uyumludur
+- Marka vurgularında `#ba0918` kullanılır; ana sayfadaki beş köşeli yıldız koyu laciverttir. Altbilgi tek satır içerik ve GitHub bağlantısı ile sunulur
 
 Kart kapakları harici görsel dosyalar yerine hafif SVG illüstrasyonlardan üretilir. Projelerin Türkçe içerikleri `app.js` içindeki `sections` nesnesinde, İngilizce karşılıkları `enSections` içinde düzenlenebilir.
 
