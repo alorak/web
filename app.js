@@ -48,6 +48,113 @@ const sections = {
   }
 };
 
+
+const uiStrings = {
+  tr: {
+    skip: "İçeriğe geç",
+    navGames: "Oyun", navTools: "Araçlar", navEducation: "Eğitim", navScience: "Bilim",
+    footer: "Merakla geliştirildi. Paylaşmak için üretildi.",
+    brandAria: "ALORAK — Ana sayfa", navAria: "Ana menü", languagesAria: "Dil seçimi",
+    githubAria: "ALORAK GitHub hesabı (yeni sekme)", closeDialog: "Pencereyi kapat",
+    menuOpen: "Menüyü aç", menuClose: "Menüyü kapat",
+    homeTitle: "ALORAK — Oyna, öğren, üret",
+    metaDescription: "ALORAK: oyun, araçlar, eğitim ve bilim için açık ve merak dolu projeler.",
+    ogDescription: "Oyunlarla öğren, araçlarla üret, bilimle keşfet.",
+    heroCuriosity: "Merak et.", heroPlay: "Oyna,", heroLearn: "öğren,", heroCreate: "üret.",
+    heroCopy: "ALORAK, oyunla başlayan fikirlerin yaratıcı araçlara, öğrenme deneyimlerine ve bilimsel keşiflere dönüştüğü açık bir üretim alanı.",
+    footnote: "Her proje küçük bir merakla başlar.",
+    projectCount: "proje", details: "Detay", detailsAria: "detayları gör",
+    viewGithub: "GitHub'da incele", externalNote: "Proje yeni sekmede açılır."
+  },
+  en: {
+    skip: "Skip to content",
+    navGames: "Games", navTools: "Tools", navEducation: "Education", navScience: "Science",
+    footer: "Made with curiosity. Built to be shared.",
+    brandAria: "ALORAK — Home", navAria: "Main navigation", languagesAria: "Language",
+    githubAria: "ALORAK GitHub profile (opens in a new tab)", closeDialog: "Close dialog",
+    menuOpen: "Open menu", menuClose: "Close menu",
+    homeTitle: "ALORAK — Play, learn, create",
+    metaDescription: "ALORAK: a curious and open collection of games, tools, education and science projects.",
+    ogDescription: "Learn through play, create with tools and explore through science.",
+    heroCuriosity: "Stay curious.", heroPlay: "Play,", heroLearn: "learn,", heroCreate: "create.",
+    heroCopy: "ALORAK is an open creative space where ideas sparked by play grow into useful tools, learning experiences and scientific discoveries.",
+    footnote: "Every project begins with a little curiosity.",
+    projectCount: "projects", details: "Details", detailsAria: "view details",
+    viewGithub: "View on GitHub", externalNote: "The project opens in a new tab."
+  }
+};
+
+const enSections = {
+  oyun: {
+    title: "Games", eyebrow: "01 / Games",
+    intro: "Play, try things out and discover. Games that build big skills through small steps.",
+    projects: {
+      sayitreni: ["Number Train", "Arrange train cars in the right order and explore numbers.", "AGES 4–6"],
+      sayiyuvasi: ["Number Nest", "Match numbers with the quantities they represent.", "AGES 4–6"],
+      catchnumber: ["Catch the Number", "Catch the correct number and sharpen your focus and speed.", "AGES 5–7"],
+      sayma: ["Counting", "Count objects and take your first steps with numbers.", "AGES 3–5"],
+      blockCode: ["BlockCode", "Connect blocks and discover the basics of coding.", "AGES 6–9"],
+      sayitahmin: ["Number Guessing", "Follow the clues to find the target on a number line.", "AGES 5–7"]
+    }
+  },
+  araclar: {
+    title: "Tools", eyebrow: "02 / Tools",
+    intro: "Small, practical tools that make it easier to experiment, create and share ideas.",
+    projects: {
+      exs: ["Math Editor", "Edit equations and organize your scientific notes.", "PRODUCTIVITY"],
+      soylet: ["Söylet", "Turn text into Turkish speech directly in your browser.", "AUDIO"],
+      pdf: ["PDF Tools", "Work with your PDF documents in one place.", "DOCUMENTS"],
+      texttocad: ["Text to CAD", "Turn words into ideas for three-dimensional designs.", "3D DESIGN"],
+      csvx: ["CSVX", "Explore and easily edit tabular data.", "DATA"]
+    }
+  },
+  egitim: {
+    title: "Education", eyebrow: "03 / Education",
+    intro: "Experiences that encourage curiosity, questions and hands-on learning.",
+    projects: {
+      sayicubuk: ["Number Rods", "Combine rods to explore quantities and relationships.", "MATHEMATICS"],
+      ilkislemler: ["First Operations", "Explore the first steps of addition and subtraction.", "MATHEMATICS"],
+      yazmapratik: ["Writing Practice", "Learn letters and strokes through playful exercises.", "LITERACY"],
+      erkenislemler: ["Early Operations", "Use objects to build and solve simple operations.", "MATHEMATICS"],
+      blockCode: ["Coding with Blocks", "Start thinking algorithmically with visual blocks.", "CODING"]
+    }
+  },
+  bilim: {
+    title: "Science", eyebrow: "04 / Science",
+    intro: "Explore waves, crystals, data and the physical world through interaction.",
+    projects: {
+      kristalyapi: ["Crystal Structure", "Examine crystal lattices and 3D atomic arrangements.", "CRYSTALLOGRAPHY"],
+      xrdai: ["XRD AI", "Explore X-ray diffraction and materials analysis.", "MATERIALS"],
+      dalgalar: ["Waves", "Learn by visualizing wave motion.", "PHYSICS"],
+      frekansskala: ["Frequency Scale", "Compare frequency ranges visually.", "ELECTROMAGNETISM"]
+    }
+  }
+};
+
+let language = "tr";
+try {
+  const storedLanguage = localStorage.getItem("alorak-language");
+  if (storedLanguage === "tr" || storedLanguage === "en") language = storedLanguage;
+} catch (_) {
+  // Browsers with disabled storage can still change the language for this visit.
+}
+function t(key) { return uiStrings[language][key]; }
+function localizedProject(item) {
+  if (language === "tr") return item;
+  const route = item.key.split(":")[0];
+  const section = enSections[route];
+  const [title, description, badge] = section.projects[item.repo];
+  return { ...item, title, description, badge, category: section.title };
+}
+function localizedSection(route) {
+  if (language === "tr") return sections[route];
+  return {
+    ...sections[route],
+    ...enSections[route],
+    projects: sections[route].projects.map(localizedProject)
+  };
+}
+
 const projectIndex = new Map();
 for (const [route, section] of Object.entries(sections)) {
   section.projects = section.projects.map(([repo,title,description,badge,art,bg,tag]) => {
@@ -180,7 +287,7 @@ function graphic(kind) {
 }
 
 function projectCard(item) {
-  return `<button class="project-card" type="button" data-project="${item.key}" aria-label="${item.title} — detayları gör">
+  return `<button class="project-card" type="button" data-project="${item.key}" aria-label="${item.title} — ${t("detailsAria")}">
     <div class="thumb" style="--thumb-bg:${item.bg}">
       <span class="thumb-label">ALORAK / ${item.category}</span>${graphic(item.art)}
     </div>
@@ -189,7 +296,7 @@ function projectCard(item) {
       <p>${item.description}</p>
       <div class="card-bottom">
         <span class="card-tag" style="--tag-color:${item.tag}">${item.badge}</span>
-        <span class="card-more">Detay
+        <span class="card-more">${t("details")}
           <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true">
             <path d="M4 10h12m-5-5 5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
@@ -202,24 +309,24 @@ function projectCard(item) {
 function homePage() {
   return `<section class="home" aria-labelledby="home-title">
     <div class="hero-grid">
-      <h1 class="hero-title" id="home-title">Merak et.<br><span class="under-blue">Oyna,</span> <span class="under-red">öğren,</span><br>üret.</h1>
-      <p class="hero-copy">ALORAK, oyunla başlayan fikirlerin yaratıcı araçlara, öğrenme deneyimlerine ve bilimsel keşiflere dönüştüğü açık bir üretim alanı.</p>
+      <h1 class="hero-title" id="home-title">${t("heroCuriosity")}<br><span class="under-blue">${t("heroPlay")}</span> <span class="under-red">${t("heroLearn")}</span><br>${t("heroCreate")}</h1>
+      <p class="hero-copy">${t("heroCopy")}</p>
     </div>
     <div class="hero-rule" aria-hidden="true"></div>
     <div class="home-footnote">
-      <span><span class="spark" aria-hidden="true">✳</span> Her proje küçük bir merakla başlar.</span>
+      <span><span class="spark" aria-hidden="true">✳</span> ${t("footnote")}</span>
     </div>
   </section>`;
 }
 
 function cataloguePage(route) {
-  const section = sections[route];
+  const section = localizedSection(route);
   return `<section class="catalogue-backdrop" aria-labelledby="page-title">
     <div class="catalogue-panel">
       <div class="section-eyebrow">${section.eyebrow}</div>
       <div class="catalogue-heading">
         <div><h1 id="page-title">${section.title}</h1><p>${section.intro}</p></div>
-        <span class="project-count">${section.projects.length} proje</span>
+        <span class="project-count">${section.projects.length} ${t("projectCount")}</span>
       </div>
       <div class="project-grid">${section.projects.map(projectCard).join("")}</div>
     </div>
@@ -234,13 +341,31 @@ function activeRoute() {
 function closeMenu() {
   nav.classList.remove("is-open");
   menuToggle.setAttribute("aria-expanded", "false");
-  menuToggle.setAttribute("aria-label", "Menüyü aç");
+  menuToggle.setAttribute("aria-label", t("menuOpen"));
 }
 
+function updateLanguageUi() {
+  document.documentElement.lang = language;
+  document.querySelectorAll("[data-i18n]").forEach(element => {
+    element.textContent = t(element.dataset.i18n);
+  });
+  document.querySelector(".brand").setAttribute("aria-label", t("brandAria"));
+  nav.setAttribute("aria-label", t("navAria"));
+  document.querySelector(".language-switch").setAttribute("aria-label", t("languagesAria"));
+  document.querySelector(".site-footer a").setAttribute("aria-label", t("githubAria"));
+  document.getElementById("dialog-close").setAttribute("aria-label", t("closeDialog"));
+  document.querySelector('meta[name="description"]').setAttribute("content", t("metaDescription"));
+  document.querySelector('meta[property="og:title"]').setAttribute("content", t("homeTitle"));
+  document.querySelector('meta[property="og:description"]').setAttribute("content", t("ogDescription"));
+  document.querySelectorAll("[data-lang]").forEach(button => {
+    button.setAttribute("aria-pressed", String(button.dataset.lang === language));
+  });
+}
 function render() {
+  updateLanguageUi();
   const route = activeRoute();
   main.innerHTML = route === "home" ? homePage() : cataloguePage(route);
-  document.title = route === "home" ? "ALORAK — Oyna, öğren, üret" : sections[route].title + " — ALORAK";
+  document.title = route === "home" ? t("homeTitle") : localizedSection(route).title + " — ALORAK";
   nav.querySelectorAll("a").forEach(link => {
     if (link.dataset.route === route) link.setAttribute("aria-current", "page");
     else link.removeAttribute("aria-current");
@@ -249,8 +374,9 @@ function render() {
 }
 
 function openProject(key) {
-  const item = projectIndex.get(key);
-  if (!item) return;
+  const original = projectIndex.get(key);
+  if (!original) return;
+  const item = localizedProject(original);
   dialogContent.innerHTML = `<div class="dialog-art" style="--thumb-bg:${item.bg}">${graphic(item.art)}</div>
     <div class="dialog-copy">
       <span class="dialog-category">${item.category} / ${item.badge}</span>
@@ -258,9 +384,9 @@ function openProject(key) {
       <p>${item.description}</p>
       <div class="dialog-actions">
         <a class="dialog-link" href="${item.url}" target="_blank" rel="noopener noreferrer">
-          GitHub'da incele <span aria-hidden="true">↗</span>
+          ${t("viewGithub")} <span aria-hidden="true">↗</span>
         </a>
-        <span class="dialog-note">Proje yeni sekmede açılır.</span>
+        <span class="dialog-note">${t("externalNote")}</span>
       </div>
     </div>`;
   dialog.showModal();
@@ -270,7 +396,7 @@ menuToggle.addEventListener("click", () => {
   const opened = !nav.classList.contains("is-open");
   nav.classList.toggle("is-open", opened);
   menuToggle.setAttribute("aria-expanded", String(opened));
-  menuToggle.setAttribute("aria-label", opened ? "Menüyü kapat" : "Menüyü aç");
+  menuToggle.setAttribute("aria-label", opened ? t("menuClose") : t("menuOpen"));
 });
 document.addEventListener("click", event => {
   if (!event.target.closest(".site-header")) closeMenu();
@@ -282,6 +408,13 @@ main.addEventListener("click", event => {
 document.getElementById("dialog-close").addEventListener("click", () => dialog.close());
 dialog.addEventListener("click", event => {
   if (event.target === dialog) dialog.close();
+});
+document.querySelector(".language-switch").addEventListener("click", event => {
+  const button = event.target.closest("button[data-lang]");
+  if (!button || language === button.dataset.lang) return;
+  language = button.dataset.lang;
+  try { localStorage.setItem("alorak-language", language); } catch (_) {}
+  render();
 });
 window.addEventListener("hashchange", () => {
   if (dialog.open) dialog.close();
