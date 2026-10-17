@@ -22,8 +22,11 @@ const sections = {
     intro: "Bir fikri denemeyi, üretmeyi ve paylaşmayı kolaylaştıran küçük ama kullanışlı araçlar.",
     projects: [
       ["exs","Matematik Editörü","Denklemleri ve bilimsel notlarını düzenle.","ÜRETKENLİK","math","#e9eefe","#477dd5"],
-      ["soylet","Söylet","Metinlerini tarayıcıda Türkçe sese dönüştür.","SES","audio","#e7f7f1","#1ca68c"],
+      ["mathnote","MathNote","Formüller yaz, anlık hesaplama yap ve fonksiyonları grafikle incele.","MATEMATİK","mathnote","#e9f1ff","#4c7bcf"],
+      ["marknote","MarkNote","Markdown, Mermaid ve LaTeX belgeleri oluştur ve önizle.","BELGELER","marknote","#f2edff","#886acc"],
       ["pdf","PDF Araçları","PDF belgelerinle tek bir çalışma alanında ilgilen.","BELGE","pdf","#fff0e8","#ec7654"],
+      ["gereksinimler","Gereksinim ve İş Takibi","Gereksinimleri, görevleri ve ilerlemeyi tek yerde düzenle.","PROJE","requirements","#e8f7f1","#2d9c79"],
+      ["soylet","Söylet","Metinlerini tarayıcıda Türkçe sese dönüştür.","SES","audio","#e7f7f1","#1ca68c"],
       ["texttocad","Text to CAD","Sözcüklerden üç boyutlu tasarım fikirleri üret.","3B TASARIM","cad","#e8f4fa","#427fc2"],
       ["csvx","CSVX","Tablo verilerini incele ve rahatça düzenle.","VERİ","table","#f1ecfd","#8c67ce"]
     ]
@@ -44,8 +47,9 @@ const sections = {
     intro: "Dalgaları, kristalleri, verileri ve fiziksel dünyayı etkileşimle keşfet.",
     projects: [
       ["kristalyapi","Kristal Yapı","Kristal örgüleri ve üç boyutlu atom düzenlerini incele.","KRİSTALOGRAFİ","crystal","#e6f0fb","#3a72ce"],
-      ["xrdai","XRD AI","X-ışını kırınımını ve malzeme analizini keşfet.","MALZEME","diffraction","#eeeafb","#8669cb"],
+      ["enerji","Enerji","Enerji kavramını ve korunum yasalarını etkileşimli fizik simülasyonlarıyla keşfet.","FİZİK","energy","#fff2d9","#e8a340"],
       ["dalgalar","Dalgalar","Dalga hareketlerini görselleştirerek öğren.","FİZİK","wave","#e3f7f6","#18a6a2"],
+      ["xrdai","XRD AI","X-ışını kırınımını ve malzeme analizini keşfet.","MALZEME","diffraction","#eeeafb","#8669cb"],
       ["frekansskala","Frekans Skalası","Frekans aralıklarını görsel olarak karşılaştır.","ELEKTROMANYETİZMA","frequency","#fff0e6","#e47c4e"]
     ]
   }
@@ -110,6 +114,9 @@ const enSections = {
     intro: "Small, practical tools that make it easier to experiment, create and share ideas.",
     projects: {
       exs: ["Math Editor", "Edit equations and organize your scientific notes.", "PRODUCTIVITY"],
+      mathnote: ["MathNote", "Write formulas, evaluate expressions instantly and explore function plots.", "MATHEMATICS"],
+      marknote: ["MarkNote", "Create and preview Markdown, Mermaid and LaTeX documents.", "DOCUMENTS"],
+      gereksinimler: ["Requirements & Task Tracker", "Organize requirements, tasks and progress in one place.", "PROJECTS"],
       soylet: ["Söylet", "Turn text into Turkish speech directly in your browser.", "AUDIO"],
       pdf: ["PDF Tools", "Work with your PDF documents in one place.", "DOCUMENTS"],
       texttocad: ["Text to CAD", "Turn words into ideas for three-dimensional designs.", "3D DESIGN"],
@@ -132,6 +139,7 @@ const enSections = {
     intro: "Explore waves, crystals, data and the physical world through interaction.",
     projects: {
       kristalyapi: ["Crystal Structure", "Examine crystal lattices and 3D atomic arrangements.", "CRYSTALLOGRAPHY"],
+      enerji: ["Energy", "Explore energy and conservation laws through interactive physics simulations.", "PHYSICS"],
       xrdai: ["XRD AI", "Explore X-ray diffraction and materials analysis.", "MATERIALS"],
       dalgalar: ["Waves", "Learn by visualizing wave motion.", "PHYSICS"],
       frekansskala: ["Frequency Scale", "Compare frequency ranges visually.", "ELECTROMAGNETISM"]
@@ -163,11 +171,19 @@ function localizedSection(route) {
   };
 }
 
-const featuredGameUrls = {
+const liveAppUrls = {
   "oyun:brickids": "https://alorak.github.io/brickids/",
   "oyun:webtrain": "https://alorak.github.io/webtrain/",
   "oyun:sayicubuk": "https://alorak.github.io/sayicubuk/",
-  "oyun:sayma": "https://alorak.github.io/sayma/"
+  "oyun:sayma": "https://alorak.github.io/sayma/",
+  "bilim:kristalyapi": "https://alorak.github.io/kristalyapi/",
+  "bilim:enerji": "https://alorak.github.io/enerji/",
+  "bilim:dalgalar": "https://alorak.github.io/dalgalar/",
+  "araclar:exs": "https://alorak.github.io/exs/",
+  "araclar:mathnote": "https://alorak.github.io/mathnote/",
+  "araclar:marknote": "https://marknote.alorak.com/",
+  "araclar:pdf": "https://alorak.github.io/pdf/",
+  "araclar:gereksinimler": "https://alorak.github.io/gereksinimler/"
 };
 
 const projectIndex = new Map();
@@ -176,8 +192,8 @@ for (const [route, section] of Object.entries(sections)) {
     const key = route + ":" + repo;
     const project = {
       key, repo, title, description, badge, art, bg, tag,
-      category: section.title, url: featuredGameUrls[key] || "https://github.com/alorak/" + repo,
-      isFeaturedApp: Boolean(featuredGameUrls[key])
+      category: section.title, url: liveAppUrls[key] || "https://github.com/alorak/" + repo,
+      isLiveApp: Boolean(liveAppUrls[key])
     };
     projectIndex.set(project.key, project);
     return project;
@@ -212,6 +228,36 @@ function graphic(kind) {
         box(87,77,44,40,"#fff1ce",6) +
         `<path d="m81 81 27-25 29 25Z" fill="#e58b74"/>` +
         dot(300,88,24,"#4ba978") + box(294,101,12,23,"#7a9175",3);
+      break;
+    case "energy":
+      draw = dot(200,110,82,"#fff9e8") +
+        `<circle cx="200" cy="110" r="67" fill="none" stroke="#efc26b" stroke-width="5" stroke-dasharray="7 13"/>` +
+        `<path d="m216 35-64 90h43l-11 63 65-94h-44Z" fill="#efaa39" stroke="#d78a27" stroke-width="4" stroke-linejoin="round"/>` +
+        dot(92,81,13,"#ef8f68") + dot(310,148,14,"#65bcb0") +
+        `<path d="M106 85 138 100M262 127l34 16" stroke="#e8ba76" stroke-width="5" stroke-linecap="round"/>`;
+      break;
+    case "mathnote":
+      draw = box(55,25,290,177,"#fff",18) +
+        `<path d="M94 170V55M83 151h225" stroke="#bfd0e6" stroke-width="4" stroke-linecap="round"/>` +
+        `<path d="M99 151C126 146 141 67 173 76S224 193 255 139 299 89 317 101" fill="none" stroke="#4a87d3" stroke-width="7" stroke-linecap="round"/>` +
+        label(195,54,"f(x)",24,"#234e7c") +
+        dot(173,76,8,"#ee765e") + dot(255,139,8,"#ee765e");
+      break;
+    case "marknote":
+      draw = box(58,27,284,172,"#fff",16) + box(58,27,284,40,"#d6caed",13) +
+        label(99,57,"#",28,"#7859a7") +
+        `<path d="M92 90h119M92 113h85M92 135h96M92 157h72" stroke="#b9b9d2" stroke-width="7" stroke-linecap="round"/>` +
+        `<rect x="235" y="89" width="75" height="73" rx="12" fill="#f1eafb" stroke="#b7a5db" stroke-width="3"/>` +
+        dot(251,110,7,"#8c70c4") + dot(294,143,7,"#8c70c4") + dot(251,143,7,"#d899c9") +
+        `<path d="M251 117v19h36l-29-22" fill="none" stroke="#9f8bd1" stroke-width="4" stroke-linecap="round"/>`;
+      break;
+    case "requirements":
+      draw = box(61,26,278,172,"#fff",17) +
+        [0,1,2].map((n)=>
+          box(83,56+n*44,33,32,["#66b59c","#5c98d4","#ddb86a"][n],8) +
+          `<path d="m91 ${72+n*44} 7 7 11-14" stroke="white" fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>` +
+          box(133,60+n*44,160-n*20,10,"#c6d4e2",5) +
+          box(133,76+n*44,112+n*10,6,"#e1e8ef",3)).join("");
       break;
     case "train":
       draw = `<path d="M26 179H374" stroke="#829ac0" stroke-width="6" stroke-linecap="round"/>` +
@@ -416,9 +462,9 @@ function openProject(key) {
       <p>${item.description}</p>
       <div class="dialog-actions">
         <a class="dialog-link" href="${item.url}" target="_blank" rel="noopener noreferrer">
-          ${item.isFeaturedApp ? t("openApp") : t("viewGithub")} <span aria-hidden="true">↗</span>
+          ${item.isLiveApp ? t("openApp") : t("viewGithub")} <span aria-hidden="true">↗</span>
         </a>
-        <span class="dialog-note">${item.isFeaturedApp ? t("appExternalNote") : t("externalNote")}</span>
+        <span class="dialog-note">${item.isLiveApp ? t("appExternalNote") : t("externalNote")}</span>
       </div>
     </div>`;
   dialog.showModal();
