@@ -6,10 +6,13 @@ const sections = {
     title: "Oyunlar",
     intro: "Dokun, dene, keşfet. Küçük adımlarla büyük beceriler geliştiren oyunlar.",
     projects: [
+      ["brickids","brickids","Renkli blokları birleştirerek tarayıcıda özgürce 3B modeller kur.","3B YAPIM","brick","#eaf1ff","#4e7bc6"],
+      ["webtrain","WebTrain","Raylar döşe, trenleri çalıştır ve kendi küçük dünyanı kur.","DÜNYA KURMA","worldtrain","#e7f4ec","#38a583"],
+      ["sayicubuk","Sayı Çubukları","Renkli çubuklarla sayıları ve miktarları keşfet.","MATEMATİK","rods","#e4f2ff","#377bcc"],
+      ["sayma","Sayma","Nesneleri sayarak ilk sayı yolculuğuna çık.","3–5 YAŞ","count","#d5edff","#f3a23e"],
       ["sayitreni","Sayı Treni","Vagonları doğru sırayla dizerek sayıları öğren.","4–6 YAŞ","train","#e8f2ff","#ee6753"],
       ["sayiyuvasi","Sayı Yuvası","Sayıları ve miktarları birbiriyle eşleştir.","4–6 YAŞ","nest","#eef6e8","#1da997"],
       ["catchnumber","Sayı Yakala","Doğru sayıyı yakala; dikkatini ve hızını geliştir.","5–7 YAŞ","catch","#def8fa","#397fe1"],
-      ["sayma","Sayma","Nesneleri sayarak ilk sayı yolculuğuna çık.","3–5 YAŞ","count","#d5edff","#f3a23e"],
       ["blockCode","BlockCode","Blokları birleştirerek kodlama mantığını keşfet.","6–9 YAŞ","code","#f0e9fa","#8464d2"],
       ["sayitahmin","Tahmin Oyunu","İpuçlarını izle, sayı doğrusunda hedefi bul.","5–7 YAŞ","guess","#fff0e5","#ea6b86"]
     ]
@@ -64,7 +67,8 @@ const uiStrings = {
     heroCopy: "ALORAK, oyunla başlayan fikirlerin yaratıcı araçlara, öğrenme deneyimlerine ve bilimsel keşiflere dönüştüğü açık bir üretim alanı.",
     footnote: "Her proje küçük bir merakla başlar.",
     details: "Detay", detailsAria: "detayları gör",
-    viewGithub: "GitHub'da incele", externalNote: "Proje yeni sekmede açılır."
+    viewGithub: "GitHub'da incele", externalNote: "Proje yeni sekmede açılır.",
+    openApp: "Uygulamayı aç", appExternalNote: "Uygulama yeni sekmede açılır."
   },
   en: {
     skip: "Skip to content",
@@ -80,7 +84,8 @@ const uiStrings = {
     heroCopy: "ALORAK is an open creative space where ideas sparked by play grow into useful tools, learning experiences and scientific discoveries.",
     footnote: "Every project begins with a little curiosity.",
     details: "Details", detailsAria: "view details",
-    viewGithub: "View on GitHub", externalNote: "The project opens in a new tab."
+    viewGithub: "View on GitHub", externalNote: "The project opens in a new tab.",
+    openApp: "Open app", appExternalNote: "The app opens in a new tab."
   }
 };
 
@@ -89,6 +94,9 @@ const enSections = {
     title: "Games",
     intro: "Play, try things out and discover. Games that build big skills through small steps.",
     projects: {
+      brickids: ["brickids", "Build freely with colorful bricks in a 3D playground.", "3D BUILDING"],
+      webtrain: ["WebTrain", "Lay tracks, run trains and build your own tiny world.", "WORLD BUILDING"],
+      sayicubuk: ["Number Rods", "Connect colorful rods to explore numbers and quantities.", "MATHEMATICS"],
       sayitreni: ["Number Train", "Arrange train cars in the right order and explore numbers.", "AGES 4–6"],
       sayiyuvasi: ["Number Nest", "Match numbers with the quantities they represent.", "AGES 4–6"],
       catchnumber: ["Catch the Number", "Catch the correct number and sharpen your focus and speed.", "AGES 5–7"],
@@ -155,12 +163,21 @@ function localizedSection(route) {
   };
 }
 
+const featuredGameUrls = {
+  "oyun:brickids": "https://alorak.github.io/brickids/",
+  "oyun:webtrain": "https://alorak.github.io/webtrain/",
+  "oyun:sayicubuk": "https://alorak.github.io/sayicubuk/",
+  "oyun:sayma": "https://alorak.github.io/sayma/"
+};
+
 const projectIndex = new Map();
 for (const [route, section] of Object.entries(sections)) {
   section.projects = section.projects.map(([repo,title,description,badge,art,bg,tag]) => {
+    const key = route + ":" + repo;
     const project = {
-      key: route + ":" + repo, repo, title, description, badge, art, bg, tag,
-      category: section.title, url: "https://github.com/alorak/" + repo
+      key, repo, title, description, badge, art, bg, tag,
+      category: section.title, url: featuredGameUrls[key] || "https://github.com/alorak/" + repo,
+      isFeaturedApp: Boolean(featuredGameUrls[key])
     };
     projectIndex.set(project.key, project);
     return project;
@@ -179,6 +196,23 @@ function graphic(kind) {
   const label = (x,y,t,size=26,color="#29466e") => `<text x="${x}" y="${y}" font-size="${size}" text-anchor="middle" fill="${color}" font-weight="800" font-family="system-ui,sans-serif">${t}</text>`;
   let draw = "";
   switch (kind) {
+    case "brick":
+      draw = `<polygon points="64,90 197,29 337,94 202,158" fill="#f37769"/>` +
+        `<polygon points="64,90 202,158 202,205 64,139" fill="#d65855"/>` +
+        `<polygon points="202,158 337,94 337,142 202,205" fill="#be454c"/>` +
+        [[147,75],[205,48],[263,79],[203,107]].map(([x,y])=>
+          `<ellipse cx="${x}" cy="${y}" rx="21" ry="11" fill="#fba08b" stroke="#db685e" stroke-width="3"/>`).join("");
+      break;
+    case "worldtrain":
+      draw = `<polygon points="29,133 183,50 371,138 216,213" fill="#a3d8a8" stroke="#6cb58f" stroke-width="5" stroke-linejoin="round"/>` +
+        `<path d="M71 143Q151 88 218 129T335 139" fill="none" stroke="#f5e9c9" stroke-width="28" stroke-linecap="round"/>` +
+        `<path d="M71 143Q151 88 218 129T335 139" fill="none" stroke="#667e99" stroke-width="17" stroke-linecap="round" stroke-dasharray="8 7"/>` +
+        box(176,111,70,37,"#ee7358",9) + box(186,102,42,15,"#ffc46f",5) +
+        dot(194,150,9,"#314962") + dot(233,150,9,"#314962") +
+        box(87,77,44,40,"#fff1ce",6) +
+        `<path d="m81 81 27-25 29 25Z" fill="#e58b74"/>` +
+        dot(300,88,24,"#4ba978") + box(294,101,12,23,"#7a9175",3);
+      break;
     case "train":
       draw = `<path d="M26 179H374" stroke="#829ac0" stroke-width="6" stroke-linecap="round"/>` +
         box(35,78,75,79,"#ed6958",16) + box(52,51,42,39,"#ed6958") + box(49,95,47,27,"#fff1d7",7) +
@@ -382,9 +416,9 @@ function openProject(key) {
       <p>${item.description}</p>
       <div class="dialog-actions">
         <a class="dialog-link" href="${item.url}" target="_blank" rel="noopener noreferrer">
-          ${t("viewGithub")} <span aria-hidden="true">↗</span>
+          ${item.isFeaturedApp ? t("openApp") : t("viewGithub")} <span aria-hidden="true">↗</span>
         </a>
-        <span class="dialog-note">${t("externalNote")}</span>
+        <span class="dialog-note">${item.isFeaturedApp ? t("appExternalNote") : t("externalNote")}</span>
       </div>
     </div>`;
   dialog.showModal();
