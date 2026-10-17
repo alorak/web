@@ -6,6 +6,7 @@ ALORAK'ın oyun, araçlar, eğitim ve bilim projelerini bir araya getiren statik
 
 - Anthropic'in tipografi ağırlıklı, sade yaklaşımından esinlenen ana sayfa
 - **Oyun / Araçlar / Eğitim / Bilim** gezinmesi
+- Navbar'da ayrılmış **TR / EN** dil seçimi; sayfa, kartlar ve proje detayları iki dilde, tercih `localStorage` ile saklanır
 - Referans görseldeki gibi yuvarlatılmış, görselli proje kartları
 - Kartlardan açılan erişilebilir detay penceresi ve gerçek GitHub proje bağlantıları
 - Mobil uyumlu menü, klavye erişimi, düşük hareket tercihi desteği
@@ -14,7 +15,7 @@ ALORAK'ın oyun, araçlar, eğitim ve bilim projelerini bir araya getiren statik
 - Önceki avatar görseli `sources/alorak-avatar.png` konumunda korunur.
 - Kompakt navbar, daraltılmış sayfa boşlukları ve daha sıkı kart düzeni
 
-Kart kapakları harici görsel dosyalar yerine hafif SVG illüstrasyonlardan üretilir. Proje listeleri ve açıklamaları `app.js` içindeki `sections` nesnesinden düzenlenebilir.
+Kart kapakları harici görsel dosyalar yerine hafif SVG illüstrasyonlardan üretilir. Projelerin Türkçe içerikleri `app.js` içindeki `sections` nesnesinde, İngilizce karşılıkları `enSections` içinde düzenlenebilir.
 
 ## Yerelde çalıştırma
 
