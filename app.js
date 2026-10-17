@@ -9,8 +9,8 @@ const sections = {
       ["brickids","brickids","Renkli blokları birleştirerek tarayıcıda özgürce 3B modeller kur.","3B YAPIM","brick","#eaf1ff","#4e7bc6"],
       ["webtrain","WebTrain","Raylar döşe, trenleri çalıştır ve kendi küçük dünyanı kur.","DÜNYA KURMA","worldtrain","#e7f4ec","#38a583"],
       ["sayicubuk","Sayı Çubukları","Renkli çubuklarla sayıları ve miktarları keşfet.","MATEMATİK","rods","#e4f2ff","#377bcc"],
-      ["sayma","Sayma","Nesneleri sayarak ilk sayı yolculuğuna çık.","3–5 YAŞ","count","#d5edff","#f3a23e"],
-      ["sayitreni","Sayı Treni","Vagonları doğru sırayla dizerek sayıları öğren.","4–6 YAŞ","train","#e8f2ff","#ee6753"],
+      ["sayma","Sayma","Nesneleri sayarak ilk sayı yolculuğuna çık.","3–5 YAŞ","count","#d5edff","#ba0918"],
+      ["sayitreni","Sayı Treni","Vagonları doğru sırayla dizerek sayıları öğren.","4–6 YAŞ","train","#e8f2ff","#ba0918"],
       ["sayiyuvasi","Sayı Yuvası","Sayıları ve miktarları birbiriyle eşleştir.","4–6 YAŞ","nest","#eef6e8","#1da997"],
       ["catchnumber","Sayı Yakala","Doğru sayıyı yakala; dikkatini ve hızını geliştir.","5–7 YAŞ","catch","#def8fa","#397fe1"],
       ["blockCode","BlockCode","Blokları birleştirerek kodlama mantığını keşfet.","6–9 YAŞ","code","#f0e9fa","#8464d2"],
@@ -24,7 +24,7 @@ const sections = {
       ["exs","Matematik Editörü","Denklemleri ve bilimsel notlarını düzenle.","ÜRETKENLİK","math","#e9eefe","#477dd5"],
       ["mathnote","MathNote","Formüller yaz, anlık hesaplama yap ve fonksiyonları grafikle incele.","MATEMATİK","mathnote","#e9f1ff","#4c7bcf"],
       ["marknote","MarkNote","Markdown, Mermaid ve LaTeX belgeleri oluştur ve önizle.","BELGELER","marknote","#f2edff","#886acc"],
-      ["pdf","PDF Araçları","PDF belgelerinle tek bir çalışma alanında ilgilen.","BELGE","pdf","#fff0e8","#ec7654"],
+      ["pdf","PDF Araçları","PDF belgelerinle tek bir çalışma alanında ilgilen.","BELGE","pdf","#fff0e8","#ba0918"],
       ["gereksinimler","Gereksinim ve İş Takibi","Gereksinimleri, görevleri ve ilerlemeyi tek yerde düzenle.","PROJE","requirements","#e8f7f1","#2d9c79"],
       ["soylet","Söylet","Metinlerini tarayıcıda Türkçe sese dönüştür.","SES","audio","#e7f7f1","#1ca68c"],
       ["texttocad","Text to CAD","Sözcüklerden üç boyutlu tasarım fikirleri üret.","3B TASARIM","cad","#e8f4fa","#427fc2"],
@@ -36,7 +36,7 @@ const sections = {
     intro: "Merak etmeyi, soru sormayı ve öğrendikçe üretmeyi destekleyen deneyimler.",
     projects: [
       ["sayicubuk","Sayı Çubukları","Parçaları birleştirerek miktarları ve ilişkileri gör.","MATEMATİK","rods","#e4f2ff","#377bcc"],
-      ["ilkislemler","İlk İşlemler","Toplama ve çıkarmanın ilk adımlarını keşfet.","MATEMATİK","operations","#fff2dc","#e49a35"],
+      ["ilkislemler","İlk İşlemler","Toplama ve çıkarmanın ilk adımlarını keşfet.","MATEMATİK","operations","#fff2dc","#ba0918"],
       ["yazmapratik","Yazma Pratiği","Harfleri ve çizgileri eğlenceli alıştırmalarla öğren.","OKURYAZARLIK","writing","#fbeaf1","#d65f8c"],
       ["erkenislemler","Erken İşlemler","Nesnelerle işlem kur, sonuca birlikte ulaş.","MATEMATİK","count","#e4f7ea","#36a77e"],
       ["blockCode","Bloklarla Kodlama","Görsel bloklarla algoritmik düşünmeye başla.","KODLAMA","code","#efe8fb","#8264cc"]
@@ -47,10 +47,10 @@ const sections = {
     intro: "Dalgaları, kristalleri, verileri ve fiziksel dünyayı etkileşimle keşfet.",
     projects: [
       ["kristalyapi","Kristal Yapı","Kristal örgüleri ve üç boyutlu atom düzenlerini incele.","KRİSTALOGRAFİ","crystal","#e6f0fb","#3a72ce"],
-      ["enerji","Enerji","Enerji kavramını ve korunum yasalarını etkileşimli fizik simülasyonlarıyla keşfet.","FİZİK","energy","#fff2d9","#e8a340"],
+      ["enerji","Enerji","Enerji kavramını ve korunum yasalarını etkileşimli fizik simülasyonlarıyla keşfet.","FİZİK","energy","#fff2d9","#ba0918"],
       ["dalgalar","Dalgalar","Dalga hareketlerini görselleştirerek öğren.","FİZİK","wave","#e3f7f6","#18a6a2"],
       ["xrdai","XRD AI","X-ışını kırınımını ve malzeme analizini keşfet.","MALZEME","diffraction","#eeeafb","#8669cb"],
-      ["frekansskala","Frekans Skalası","Frekans aralıklarını görsel olarak karşılaştır.","ELEKTROMANYETİZMA","frequency","#fff0e6","#e47c4e"]
+      ["frekansskala","Frekans Skalası","Frekans aralıklarını görsel olarak karşılaştır.","ELEKTROMANYETİZMA","frequency","#fff0e6","#ba0918"]
     ]
   }
 };
