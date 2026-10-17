@@ -28,6 +28,14 @@ Oyun sayfasının ilk dört kartı aşağıdaki sıradadır ve detay penceresind
 3. [Sayı Çubukları](https://alorak.github.io/sayicubuk/)
 4. [Sayma](https://alorak.github.io/sayma/)
 
+## Bilim ve Araçlar öne çıkan uygulamalar
+
+Bilim sayfasının ilk kartları: [Kristal Yapı](https://alorak.github.io/kristalyapi/), [Enerji](https://alorak.github.io/enerji/), [Dalgalar](https://alorak.github.io/dalgalar/).
+
+Araçlar sayfasının ilk kartları: [EXS](https://alorak.github.io/exs/), [MathNote](https://alorak.github.io/mathnote/), [MarkNote](https://marknote.alorak.com/), [PDF Araçları](https://alorak.github.io/pdf/), [Gereksinim ve İş Takibi](https://alorak.github.io/gereksinimler/).
+
+Bu öne çıkan kartların detay pencerelerindeki butonlar, GitHub depoları yerine doğrudan canlı uygulama adreslerine gider.
+
 ## Yerelde çalıştırma
 
 ```sh
