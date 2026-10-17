@@ -201,7 +201,6 @@ function projectCard(item) {
 
 function homePage() {
   return `<section class="home" aria-labelledby="home-title">
-    <div class="hero-eyebrow">Oyun · Araçlar · Eğitim · Bilim</div>
     <div class="hero-grid">
       <h1 class="hero-title" id="home-title">Merak et.<br><span class="under-blue">Oyna,</span> <span class="under-red">öğren,</span><br>üret.</h1>
       <p class="hero-copy">ALORAK, oyunla başlayan fikirlerin yaratıcı araçlara, öğrenme deneyimlerine ve bilimsel keşiflere dönüştüğü açık bir üretim alanı.</p>
@@ -209,7 +208,6 @@ function homePage() {
     <div class="hero-rule" aria-hidden="true"></div>
     <div class="home-footnote">
       <span><span class="spark" aria-hidden="true">✳</span> Her proje küçük bir merakla başlar.</span>
-      <span>Kategorileri üst menüden keşfet <span aria-hidden="true">↑</span></span>
     </div>
   </section>`;
 }
