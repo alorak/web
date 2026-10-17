@@ -1,10 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="15" fill="#102139"/>
-  <rect x="8" y="24" width="36" height="33" rx="9" fill="#337bd0"/>
-  <path d="M17 33h17M17 40h17M17 47h12" stroke="#f6f4ee" stroke-width="3.8" stroke-linecap="round"/>
-  <path d="m32 7 25 13-13 27-25-13Z" fill="#ed6555"/>
-  <path d="m32 7 25 13-13 7-25-13Z" fill="#f68975"/>
-  <path d="M44 27v20L19 34V14Z" fill="#cf4b42"/>
-  <circle cx="33" cy="13" r="4" fill="#ffb0a2"/>
-  <circle cx="46" cy="20" r="4" fill="#ffb0a2"/>
+  <title>ALORAK</title>
+  <text x="7" y="48" fill="#162640" font-family="Arial, Helvetica, sans-serif" font-size="51" font-weight="800" letter-spacing="-3">A</text>
+  <circle cx="50" cy="47" r="6" fill="#e96051"/>
 </svg>
