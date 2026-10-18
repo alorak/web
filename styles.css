@@ -16,7 +16,11 @@
   font-synthesis: none;
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  /* Reserve the scrollbar track on short pages to prevent navigation shifts. */
+  scrollbar-gutter: stable;
+}
 body {
   margin: 0;
   min-width: 320px;
